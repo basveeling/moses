@@ -207,7 +207,7 @@ lib iconv ;
 requirements += <os>MACOSX:<library>iconv ;
 
 # Boost python stuff
-requirements += <library>/boost/python//boost_python ;
+requirements += <library>boost_python ;
 
 project : requirements
   <threading>multi:<define>WITH_THREADS
