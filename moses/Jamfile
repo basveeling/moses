@@ -4,8 +4,6 @@ path-constant FACTOR-LOG : bin/factor.log ;
 update-if-changed $(FACTOR-LOG) $(max-factors) ;
 max-factors = <define>MAX_NUM_FACTORS=$(max-factors) <dependency>$(FACTOR-LOG) ;
 
-import python ;
-
 with-dlib = [ option.get "with-dlib" ] ;
 if $(with-dlib) {
   dlib = <define>WITH_DLIB <include>$(with-dlib) ;
