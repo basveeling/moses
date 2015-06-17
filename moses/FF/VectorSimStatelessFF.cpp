@@ -32,7 +32,7 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
 {
   ReadParameters();
   printf("TESTING DATE3");
-  &exectest1 = exectest("date".c_str());
+  std::string &exectest1 = exectest("date");
   printf("%s", exectest1.c_str());
 }
 
@@ -50,7 +50,7 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   // sparse scores
   scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
   printf("TESTING DATE1");
-  &exectest1 = exectest("date".c_str());
+  std::string &exectest1 = exectest("date");
   printf("%s", exectest1.c_str());
 }
 
@@ -67,7 +67,7 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
     scoreBreakdown.PlusEquals(this, newScores);
   }
   printf("TESTING DATE2");
-  &exectest1 = exectest("date".c_str());
+  std::string &exectest1 = exectest("date");
   printf("%s", exectest1.c_str());
 }
 
