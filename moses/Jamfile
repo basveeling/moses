@@ -126,11 +126,11 @@ TranslationModel/CompactPT//CompactPT
 TranslationModel/ProbingPT//ProbingPT 
 ThreadPool
 ..//search 
-../util/double-conversion//double-conversion
-..//z
-../OnDiskPt//OnDiskPt
+../util/double-conversion//double-conversion 
+..//z 
+../OnDiskPt//OnDiskPt 
 $(TOP)//boost_filesystem 
-$(TOP)//boost_iostreams
+$(TOP)//boost_iostreams 
 :
 <threading>single:<source>../util//rt
 ;
