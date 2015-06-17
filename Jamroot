@@ -209,7 +209,7 @@ requirements += <os>MACOSX:<library>iconv ;
 
 # Boost python stuff
 #requirements += <library>/home/veeling/boost_1_55_0/lib64/libboost_python.so ;
-requirements += <library>/boost/python//boost_python ;
+requirements += <library>/home/veeling/boost_1_55_0/stage/lib/libboost_python.so ;
 
 
 import python ;
