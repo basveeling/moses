@@ -209,6 +209,7 @@ requirements += <os>MACOSX:<library>iconv ;
 
 # Boost python stuff
 requirements += <library>/apps/linux_tools/boost_1_55_0/lib64/libboost_python.so ;
+requirements += <library>/apps/linux_tools/boost_1_55_0/lib64/libboost_python.so ;
 
 
 import python ;
@@ -225,6 +226,7 @@ project : requirements
   <threading>multi:<library>boost_thread
   <library>boost_system
   <library>boost_program_options
+  <library>/usr/include/python2.7
   <define>_FILE_OFFSET_BITS=64 <define>_LARGE_FILES
   $(requirements)
   <include>.
