@@ -205,24 +205,7 @@ project : default-build
 lib iconv ;
 requirements += <os>MACOSX:<library>iconv ;
 
-# Boost python stuff
-#requirements += <library>/home/veeling/boost_1_55_0/lib64/libboost_python.so ;
-requirements += <library>boost_python ; #/home/veeling/boost_1_55_0/stage/lib/libboost_python.so.1.55.0 ;
-
-
-import python ;
-
-if ! [ python.configured ]
-{
-    ECHO "notice: no Python configured in user-config.jam" ;
-    ECHO "notice: will use default configuration" ;
-    using python ;
-}
-import toolset : using ;
-using python ;
-
-
-project : requirements
+project : requirements 
   <threading>multi:<define>WITH_THREADS
   <threading>multi:<library>boost_thread
   <library>boost_system
