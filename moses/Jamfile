@@ -124,7 +124,8 @@ TranslationModel/CompactPT//CompactPT
 TranslationModel/ProbingPT//ProbingPT 
 ThreadPool
 ..//search 
-../util/double-conversion//double-conversion 
+../util/double-conversion//double-conversion
+/usr/include/python2.7
 ..//z 
 ../OnDiskPt//OnDiskPt 
 $(TOP)//boost_filesystem 

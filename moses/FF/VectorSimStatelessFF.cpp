@@ -2,6 +2,7 @@
 #include "VectorSimStatelessFF.h"
 #include "moses/ScoreComponentCollection.h"
 #include "moses/TargetPhrase.h"
+#include <Python.h>
 #include <boost/python.hpp>
 
 using namespace boost::python;

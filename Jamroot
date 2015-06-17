@@ -81,6 +81,7 @@ path-constant TOP : . ;
 
 include $(TOP)/jam-files/sanity.jam ;
 
+
 home = [ os.environ "HOME" ] ;
 if [ path.exists $(home)/moses-environment.jam ] 
 { 
