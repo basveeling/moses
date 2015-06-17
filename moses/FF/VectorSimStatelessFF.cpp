@@ -2,7 +2,7 @@
 #include "VectorSimStatelessFF.h"
 #include "moses/ScoreComponentCollection.h"
 #include "moses/TargetPhrase.h"
-#include <Python.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -12,11 +12,7 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
   :StatelessFeatureFunction(2, line)
 {
   ReadParameters();
-  Py_SetProgramName(argv[0]);  /* optional but recommended */
-  Py_Initialize();
-  PyRun_SimpleString("from time import time,ctime\n"
-                     "print 'Today is',ctime(time())\n");
-  Py_Finalize();
+  print(std::system("date"));
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
