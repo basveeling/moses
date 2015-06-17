@@ -32,7 +32,8 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
 {
   ReadParameters();
   printf("TESTING DATE3");
-  printf("%s",exectest("date"));
+  string &exectest1 = exectest("date");
+  printf("%s", exectest1.c_str());
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
@@ -50,7 +51,7 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
   printf("TESTING DATE1");
   string &exectest1 = exectest("date");
-  printf("%s", exectest1);
+  printf("%s", exectest1.c_str());
 }
 
 void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
@@ -67,7 +68,7 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
   }
   printf("TESTING DATE2");
   string &exectest1 = exectest("date");
-  printf("%s", exectest1);
+  printf("%s", exectest1.c_str());
 }
 
 void VectorSimStatelessFF::EvaluateTranslationOptionListWithSourceContext(const InputType &input
