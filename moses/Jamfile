@@ -129,7 +129,6 @@ ThreadPool
 ../OnDiskPt//OnDiskPt 
 $(TOP)//boost_filesystem 
 $(TOP)//boost_iostreams
-$(TOP)//boost_python
 :
 <threading>single:<source>../util//rt
 ;
