@@ -12,7 +12,8 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
   :StatelessFeatureFunction(2, line)
 {
   ReadParameters();
-  cout << std::system("date");
+  printf("TESTING DATE3");
+  printf(std::system("date"));
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
@@ -28,7 +29,8 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
 
   // sparse scores
   scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
-
+  printf("TESTING DATE1");
+  printf(std::system("date"));
 }
 
 void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
@@ -42,7 +44,8 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
     vector<float> newScores(m_numScoreComponents);
     newScores[0] = - std::numeric_limits<float>::infinity();
     scoreBreakdown.PlusEquals(this, newScores);
-  }
+  }  printf("TESTING DATE2");
+  printf(std::system("date"));
 }
 
 void VectorSimStatelessFF::EvaluateTranslationOptionListWithSourceContext(const InputType &input
