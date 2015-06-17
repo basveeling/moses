@@ -9,20 +9,6 @@
 
 using namespace std;
 
-
-std::string exectest(char* cmd) {
-    FILE* pipe = popen(cmd, "r");
-    if (!pipe) return "ERROR";
-    char buffer[128];
-    std::string result = "";
-    while(!feof(pipe)) {
-    	if(fgets(buffer, 128, pipe) != NULL)
-    		result += buffer;
-    }
-    pclose(pipe);
-    return result;
-}
-
 namespace Moses
 {
 
@@ -32,8 +18,15 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
 {
   ReadParameters();
   printf("TESTING DATE3");
-  std::string &exectest1 = exectest("date");
-  printf("%s", exectest1.c_str());
+  FILE *fp,*outputfile;
+  char var[40];
+
+  fp = popen("date +%s", "r");
+  while (fgets(var, sizeof(var), fp) != NULL)
+    {
+      printf("%s", var);
+    }
+  pclose(fp);
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
@@ -50,8 +43,15 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   // sparse scores
   scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
   printf("TESTING DATE1");
-  std::string &exectest1 = exectest("date");
-  printf("%s", exectest1.c_str());
+  FILE *fp,*outputfile;
+  char var[40];
+
+  fp = popen("date +%s", "r");
+  while (fgets(var, sizeof(var), fp) != NULL)
+    {
+      printf("%s", var);
+    }
+  pclose(fp);
 }
 
 void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
@@ -67,8 +67,15 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
     scoreBreakdown.PlusEquals(this, newScores);
   }
   printf("TESTING DATE2");
-  std::string &exectest1 = exectest("date");
-  printf("%s", exectest1.c_str());
+  FILE *fp,*outputfile;
+  char var[40];
+
+  fp = popen("date +%s", "r");
+  while (fgets(var, sizeof(var), fp) != NULL)
+    {
+      printf("%s", var);
+    }
+  pclose(fp);
 }
 
 void VectorSimStatelessFF::EvaluateTranslationOptionListWithSourceContext(const InputType &input
