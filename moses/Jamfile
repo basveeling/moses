@@ -129,7 +129,6 @@ ThreadPool
 ../util/double-conversion//double-conversion
 ..//z
 ../OnDiskPt//OnDiskPt
-/usr/include/python2.7
 $(TOP)//boost_filesystem 
 $(TOP)//boost_iostreams
 :
