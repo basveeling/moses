@@ -59,6 +59,9 @@
 
 #include "moses/FF/SkeletonStatelessFF.h"
 #include "moses/FF/SkeletonStatefulFF.h"
+
+#include "moses/FF/VectorSimStatelessFF.h"
+
 #include "moses/LM/SkeletonLM.h"
 #include "moses/FF/SkeletonTranslationOptionListFeature.h"
 #include "moses/LM/BilingualLM.h"
@@ -263,6 +266,7 @@ FeatureRegistry::FeatureRegistry()
   MOSES_FNAME(SyntaxRHS);
   MOSES_FNAME(PhraseOrientationFeature);
   MOSES_FNAME(UnalignedWordCountFeature);
+  MOSES_FNAME(VectorSimStatelessFF);
 
   MOSES_FNAME(SkeletonStatelessFF);
   MOSES_FNAME(SkeletonStatefulFF);

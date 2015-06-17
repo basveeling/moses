@@ -6,10 +6,10 @@
 namespace Moses
 {
 
-class SkeletonStatelessFF : public StatelessFeatureFunction
+class VectorSimStatelessFF : public StatelessFeatureFunction
 {
 public:
-  SkeletonStatelessFF(const std::string &line);
+  VectorSimStatelessFF(const std::string &line);
 
   bool IsUseable(const FactorMask &mask) const {
     return true;
