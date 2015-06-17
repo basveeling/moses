@@ -12,7 +12,7 @@ VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
   :StatelessFeatureFunction(2, line)
 {
   ReadParameters();
-  print(std::system("date"));
+  cout << std::system("date");
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
