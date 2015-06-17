@@ -81,6 +81,7 @@ path-constant TOP : . ;
 
 include $(TOP)/jam-files/sanity.jam ;
 
+LIBS += /home/veeling/boost_1_55_0/stage/lib
 
 home = [ os.environ "HOME" ] ;
 if [ path.exists $(home)/moses-environment.jam ] 
