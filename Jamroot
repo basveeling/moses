@@ -209,6 +209,16 @@ requirements += <os>MACOSX:<library>iconv ;
 # Boost python stuff
 requirements += <library>/apps/linux_tools/boost_1_55_0/lib64/libboost_python.so ;
 
+
+import python ;
+
+if ! [ python.configured ]
+{
+    ECHO "notice: no Python configured in user-config.jam" ;
+    ECHO "notice: will use default configuration" ;
+    using python ;
+}
+
 project : requirements
   <threading>multi:<define>WITH_THREADS
   <threading>multi:<library>boost_thread
@@ -220,14 +230,6 @@ project : requirements
   ;
 
 
-import python ;
-
-if ! [ python.configured ]
-{
-    ECHO "notice: no Python configured in user-config.jam" ;
-    ECHO "notice: will use default configuration" ;
-    using python ;
-}
 
 #Add directories here if you want their incidental targets too (i.e. tests).
 build-projects lm util phrase-extract phrase-extract/syntax-common search moses moses/LM mert moses-cmd scripts regression-testing ;
