@@ -219,6 +219,9 @@ if ! [ python.configured ]
     ECHO "notice: will use default configuration" ;
     using python ;
 }
+import toolset : using ;
+using python ;
+
 
 project : requirements
   <threading>multi:<define>WITH_THREADS
