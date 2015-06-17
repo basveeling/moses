@@ -49,7 +49,8 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   // sparse scores
   scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
   printf("TESTING DATE1");
-  printf("%s",exectest("date"));
+  string &exectest1 = exectest("date");
+  printf("%s", exectest1);
 }
 
 void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
@@ -63,8 +64,10 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
     vector<float> newScores(m_numScoreComponents);
     newScores[0] = - std::numeric_limits<float>::infinity();
     scoreBreakdown.PlusEquals(this, newScores);
-  }  printf("TESTING DATE2");
-  printf("%s",exectest("date"));
+  }
+  printf("TESTING DATE2");
+  string &exectest1 = exectest("date");
+  printf("%s", exectest1);
 }
 
 void VectorSimStatelessFF::EvaluateTranslationOptionListWithSourceContext(const InputType &input
