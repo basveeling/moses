@@ -33,11 +33,11 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   FILE *fp,*outputfile;
   char var[40];
 
-  fp = popen("/home/veeling/nlp2-lab/get_sim.sh " + phrase_source.c_str() + " " + phrase_target.c_str(), "r");
+  fp = popen("/home/veeling/nlp2-lab/get_sim.sh " << phrase_source.c_str() << " " << phrase_target.c_str(), "r");
   while (fgets(var, sizeof(var), fp) != NULL) {}
   float score = std::stof(std::string(var));
 
-  cerr << "Getting sim for " + phrase_source.c_str() + ", " + phrase_target.c_str() + "\n";
+  cerr << "Getting sim for " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
   cerr << "Sim Score = " + std::string(score);
 
   // dense scores
