@@ -4,6 +4,7 @@
 #include "moses/TargetPhrase.h"
 #include <cstdlib>
 #include <string>
+#include "StaticData.h"
 #include <iostream>
 #include <stdio.h>
 
