@@ -37,7 +37,6 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   // dense scores
   vector<float> newScores(m_numScoreComponents);
   newScores[0] = 1.5;
-  newScores[1] = 0.3;
   scoreBreakdown.PlusEquals(this, newScores);
 
   // sparse scores

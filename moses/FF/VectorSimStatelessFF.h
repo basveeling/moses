@@ -3,7 +3,6 @@
 #include <string>
 #include "StatelessFeatureFunction.h"
 
-std::string exectest(char* cmd);
 namespace Moses
 {
 
