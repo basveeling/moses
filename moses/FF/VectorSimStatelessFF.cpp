@@ -14,19 +14,9 @@ namespace Moses
 
 
 VectorSimStatelessFF::VectorSimStatelessFF(const std::string &line)
-  :StatelessFeatureFunction(2, line)
+  :StatelessFeatureFunction(1, line)
 {
   ReadParameters();
-  printf("TESTING DATE3");
-  FILE *fp,*outputfile;
-  char var[40];
-
-  fp = popen("date +%s", "r");
-  while (fgets(var, sizeof(var), fp) != NULL)
-    {
-      printf("%s", var);
-    }
-  pclose(fp);
 }
 
 void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
@@ -34,23 +24,24 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
     , ScoreComponentCollection &scoreBreakdown
     , ScoreComponentCollection &estimatedFutureScore) const
 {
-  // dense scores
-  vector<float> newScores(m_numScoreComponents);
-  newScores[0] = 1.5;
-  scoreBreakdown.PlusEquals(this, newScores);
 
-  // sparse scores
-  scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
-  printf("TESTING DATE1");
+  std::vector<FactorType> outputFactorOrder = StaticData::Instance().GetOutputFactorOrder();
+  std::string phrase_source = source.GetStringRep(outputFactorOrder);
+  std::string phrase_target = targetPhrase.GetStringRep(outputFactorOrder);
   FILE *fp,*outputfile;
   char var[40];
 
-  fp = popen("date +%s", "r");
-  while (fgets(var, sizeof(var), fp) != NULL)
-    {
-      printf("%s", var);
-    }
-  pclose(fp);
+  fp = popen("/home/veeling/nlp2-lab/get_sim.sh " << phrase_source << " " << phrase_target, "r");
+  while (fgets(var, sizeof(var), fp) != NULL) {}
+  float score = std::stof(std::string(var));
+
+  cerr << "Getting sim for " << phrase_source << ", " << phrase_target << "\n";
+  cerr << "Sim Score" << " = " << score;
+
+  // dense scores
+  vector<float> newScores(m_numScoreComponents);
+  newScores[0] = score;
+  scoreBreakdown.PlusEquals(this, newScores);
 }
 
 void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
@@ -60,21 +51,21 @@ void VectorSimStatelessFF::EvaluateWithSourceContext(const InputType &input
     , ScoreComponentCollection &scoreBreakdown
     , ScoreComponentCollection *estimatedFutureScore) const
 {
-  if (targetPhrase.GetNumNonTerminals()) {
-    vector<float> newScores(m_numScoreComponents);
-    newScores[0] = - std::numeric_limits<float>::infinity();
-    scoreBreakdown.PlusEquals(this, newScores);
-  }
-  printf("TESTING DATE2");
-  FILE *fp,*outputfile;
-  char var[40];
-
-  fp = popen("date +%s", "r");
-  while (fgets(var, sizeof(var), fp) != NULL)
-    {
-      printf("%s", var);
-    }
-  pclose(fp);
+//  if (targetPhrase.GetNumNonTerminals()) {
+//    vector<float> newScores(m_numScoreComponents);
+//    newScores[0] = - std::numeric_limits<float>::infinity();
+//    scoreBreakdown.PlusEquals(this, newScores);
+//  }
+//  printf("TESTING DATE2");
+//  FILE *fp,*outputfile;
+//  char var[40];
+//
+//  fp = popen("date +%s", "r");
+//  while (fgets(var, sizeof(var), fp) != NULL)
+//    {
+//      printf("%s", var);
+//    }
+//  pclose(fp);
 }
 
 void VectorSimStatelessFF::EvaluateTranslationOptionListWithSourceContext(const InputType &input
@@ -92,11 +83,11 @@ void VectorSimStatelessFF::EvaluateWhenApplied(const ChartHypothesis &hypo,
 
 void VectorSimStatelessFF::SetParameter(const std::string& key, const std::string& value)
 {
-  if (key == "arg") {
-    // set value here
-  } else {
-    StatelessFeatureFunction::SetParameter(key, value);
-  }
+//  if (key == "arg") {
+//    // set value here
+//  } else {
+//    StatelessFeatureFunction::SetParameter(key, value);
+//  }
 }
 
 }
