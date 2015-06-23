@@ -31,7 +31,7 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   std::string phrase_source = source.GetStringRep(outputFactorOrder);
   std::string phrase_target = targetPhrase.GetStringRep(outputFactorOrder);
   FILE *fp,*outputfile;
-  char var[40];
+  char var[10];
 
   std::string command_str("/home/veeling/nlp2-lab/get_sim.sh ");
   command_str.append(phrase_source.c_str());
@@ -39,6 +39,8 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   command_str.append(phrase_target.c_str());
   fp = popen(command_str.c_str(), "r");
   while (fgets(var, sizeof(var), fp) != NULL) {}
+  std:cerr << "Parsing this: ";
+  std:cerr << std::string(var);
   float score = std::stof(std::string(var));
 
   std::cerr << "Getting sim for " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
