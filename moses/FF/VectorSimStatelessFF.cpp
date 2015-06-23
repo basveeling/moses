@@ -31,21 +31,25 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   std::string phrase_source = source.GetStringRep(outputFactorOrder);
   std::string phrase_target = targetPhrase.GetStringRep(outputFactorOrder);
   FILE *fp,*outputfile;
+
   char var[10];
+  float score = 0.0;
+  try{
+      std::string command_str("/home/veeling/nlp2-lab/get_sim.sh ");
+      command_str.append(phrase_source.c_str());
+      command_str.append(" ");
+      command_str.append(phrase_target.c_str());
+      fp = popen(command_str.c_str(), "r");
+      while (fgets(var, sizeof(var), fp) != NULL) {}
+      std::cerr << "Parsing this: ";
+      std::cerr << std::string(var);
+      score = std::stof(std::string(var));
 
-  std::string command_str("/home/veeling/nlp2-lab/get_sim.sh ");
-  command_str.append(phrase_source.c_str());
-  command_str.append(" ");
-  command_str.append(phrase_target.c_str());
-  fp = popen(command_str.c_str(), "r");
-  while (fgets(var, sizeof(var), fp) != NULL) {}
-  std::cerr << "Parsing this: ";
-  std::cerr << std::string(var);
-  float score = std::stof(std::string(var));
-
-  std::cerr << "Getting sim for " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
-  std::cerr << "Sim Score = " << score;
-
+      std::cerr << "Getting sim for " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
+      std::cerr << "Sim Score = " << score;
+  } catch( ... ) {
+       std::cerr << L"error parsing! " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
+  }
   // dense scores
   vector<float> newScores(m_numScoreComponents);
   newScores[0] = score;
