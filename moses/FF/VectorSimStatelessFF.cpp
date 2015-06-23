@@ -35,10 +35,11 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   char var[10];
   float score = 0.0;
   try{
-      std::string command_str("/home/veeling/nlp2-lab/get_sim.sh ");
+      std::string command_str("/home/veeling/nlp2-lab/get_sim.sh \"");
       command_str.append(phrase_source.c_str());
-      command_str.append(" ");
+      command_str.append("\" \"");
       command_str.append(phrase_target.c_str());
+      command_str.append("\"");
       fp = popen(command_str.c_str(), "r");
       while (fgets(var, sizeof(var), fp) != NULL) {}
       std::cerr << "Parsing this: ";
