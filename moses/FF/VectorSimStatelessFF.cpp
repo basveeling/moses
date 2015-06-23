@@ -39,8 +39,8 @@ void VectorSimStatelessFF::EvaluateInIsolation(const Phrase &source
   command_str.append(phrase_target.c_str());
   fp = popen(command_str.c_str(), "r");
   while (fgets(var, sizeof(var), fp) != NULL) {}
-  std:cerr << "Parsing this: ";
-  std:cerr << std::string(var);
+  std::cerr << "Parsing this: ";
+  std::cerr << std::string(var);
   float score = std::stof(std::string(var));
 
   std::cerr << "Getting sim for " << phrase_source.c_str() << ", " << phrase_target.c_str() << "\n";
